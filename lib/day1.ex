@@ -211,7 +211,6 @@ defmodule Day1 do
         end
       end
     end
-    |> hd()
   end
 
   def solve_part_2() do
@@ -224,6 +223,5 @@ defmodule Day1 do
         end
       end
     end
-    |> hd()
   end
 end

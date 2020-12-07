@@ -50,7 +50,11 @@ defmodule Day7 do
       |> String.split("\n", trim: true)
       |> parse_lines2(%{})
 
-    count_bags(graph, graph["shiny gold"]) - 1
+    # using reduce
+    # count_bags(graph, graph["shiny gold"]) - 1
+
+    # using list comprehension
+    count_lc(graph, "shiny gold") - 1
   end
 
   def parse_lines2([], graph), do: graph
@@ -89,5 +93,13 @@ defmodule Day7 do
     Enum.reduce(children, 1, fn {count, bag}, acc ->
       acc + count * count_bags(graph, graph[bag])
     end)
+  end
+
+  def count_lc(graph, bag) do
+    bags = Map.get(graph, bag, [])
+
+    for {count, bag} <- bags, reduce: 1 do
+      acc -> acc + count * count_lc(graph, bag)
+    end
   end
 end

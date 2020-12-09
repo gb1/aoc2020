@@ -46,7 +46,7 @@ defmodule Day8 do
     |> Enum.filter(&(&1 != :terminated))
   end
 
-  def solve(_instructions, flip, index, acc, _executed) when index == 633, do: acc
+  def solve(_instructions, _flip, index, acc, _executed) when index == 633, do: acc
 
   def solve(instructions, flip, index, acc, executed) do
     if index in executed do
